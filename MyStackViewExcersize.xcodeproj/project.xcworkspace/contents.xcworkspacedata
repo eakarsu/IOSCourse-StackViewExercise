@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:stackviewtest.xcodeproj">
+      location = "self:/Users/eakarsu/Desktop/stackviewtest/MyStackViewExcersize.xcodeproj">
    </FileRef>
 </Workspace>

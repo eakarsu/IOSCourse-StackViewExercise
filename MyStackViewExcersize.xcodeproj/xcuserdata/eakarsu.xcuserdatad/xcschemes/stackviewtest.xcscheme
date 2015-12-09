@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1C68B1D91C1861EA00A95EEA"
-               BuildableName = "stackviewtest.app"
-               BlueprintName = "stackviewtest"
-               ReferencedContainer = "container:stackviewtest.xcodeproj">
+               BuildableName = "MyStackViewExcersize.app"
+               BlueprintName = "MyStackViewExcersize"
+               ReferencedContainer = "container:MyStackViewExcersize.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1C68B1D91C1861EA00A95EEA"
-            BuildableName = "stackviewtest.app"
-            BlueprintName = "stackviewtest"
-            ReferencedContainer = "container:stackviewtest.xcodeproj">
+            BuildableName = "MyStackViewExcersize.app"
+            BlueprintName = "MyStackViewExcersize"
+            ReferencedContainer = "container:MyStackViewExcersize.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1C68B1D91C1861EA00A95EEA"
-            BuildableName = "stackviewtest.app"
-            BlueprintName = "stackviewtest"
-            ReferencedContainer = "container:stackviewtest.xcodeproj">
+            BuildableName = "MyStackViewExcersize.app"
+            BlueprintName = "MyStackViewExcersize"
+            ReferencedContainer = "container:MyStackViewExcersize.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1C68B1D91C1861EA00A95EEA"
-            BuildableName = "stackviewtest.app"
-            BlueprintName = "stackviewtest"
-            ReferencedContainer = "container:stackviewtest.xcodeproj">
+            BuildableName = "MyStackViewExcersize.app"
+            BlueprintName = "MyStackViewExcersize"
+            ReferencedContainer = "container:MyStackViewExcersize.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

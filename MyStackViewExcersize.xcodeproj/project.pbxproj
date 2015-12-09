@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C68B1DA1C1861EA00A95EEA /* stackviewtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stackviewtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C68B1DA1C1861EA00A95EEA /* MyStackViewExcersize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyStackViewExcersize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C68B1DD1C1861EA00A95EEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C68B1DF1C1861EA00A95EEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1C68B1E21C1861EA00A95EEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		1C68B1DB1C1861EA00A95EEA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1C68B1DA1C1861EA00A95EEA /* stackviewtest.app */,
+				1C68B1DA1C1861EA00A95EEA /* MyStackViewExcersize.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1C68B1D91C1861EA00A95EEA /* stackviewtest */ = {
+		1C68B1D91C1861EA00A95EEA /* MyStackViewExcersize */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C68B1EC1C1861EA00A95EEA /* Build configuration list for PBXNativeTarget "stackviewtest" */;
+			buildConfigurationList = 1C68B1EC1C1861EA00A95EEA /* Build configuration list for PBXNativeTarget "MyStackViewExcersize" */;
 			buildPhases = (
 				1C68B1D61C1861EA00A95EEA /* Sources */,
 				1C68B1D71C1861EA00A95EEA /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = stackviewtest;
+			name = MyStackViewExcersize;
 			productName = stackviewtest;
-			productReference = 1C68B1DA1C1861EA00A95EEA /* stackviewtest.app */;
+			productReference = 1C68B1DA1C1861EA00A95EEA /* MyStackViewExcersize.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -100,7 +100,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1C68B1D51C1861EA00A95EEA /* Build configuration list for PBXProject "stackviewtest" */;
+			buildConfigurationList = 1C68B1D51C1861EA00A95EEA /* Build configuration list for PBXProject "MyStackViewExcersize" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -113,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1C68B1D91C1861EA00A95EEA /* stackviewtest */,
+				1C68B1D91C1861EA00A95EEA /* MyStackViewExcersize */,
 			);
 		};
 /* End PBXProject section */
@@ -251,7 +251,7 @@
 				INFOPLIST_FILE = stackviewtest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.norshin.stackviewtest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MyStackViewExcersize;
 			};
 			name = Debug;
 		};
@@ -262,14 +262,14 @@
 				INFOPLIST_FILE = stackviewtest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.norshin.stackviewtest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MyStackViewExcersize;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1C68B1D51C1861EA00A95EEA /* Build configuration list for PBXProject "stackviewtest" */ = {
+		1C68B1D51C1861EA00A95EEA /* Build configuration list for PBXProject "MyStackViewExcersize" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C68B1EA1C1861EA00A95EEA /* Debug */,
@@ -278,7 +278,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C68B1EC1C1861EA00A95EEA /* Build configuration list for PBXNativeTarget "stackviewtest" */ = {
+		1C68B1EC1C1861EA00A95EEA /* Build configuration list for PBXNativeTarget "MyStackViewExcersize" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C68B1ED1C1861EA00A95EEA /* Debug */,
