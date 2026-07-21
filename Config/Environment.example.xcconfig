@@ -1,0 +1,3 @@
+ITEMS_ENDPOINT = https:/$()/example.invalid/api/items
+CRASH_REPORTING_ENABLED = NO
+ANALYTICS_ENABLED = NO

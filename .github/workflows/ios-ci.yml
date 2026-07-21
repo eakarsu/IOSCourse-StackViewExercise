@@ -1,0 +1,17 @@
+name: iOS workflow checks
+on: [push, pull_request]
+permissions: {contents: read}
+jobs:
+  core-and-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test
+      - run: plutil -lint stackviewtest/Info.plist stackviewtest/PrivacyInfo.xcprivacy Config/ExportOptions.plist && xmllint --noout MyStackViewExcersize.xcodeproj/xcshareddata/xcschemes/MyStackViewExcersize.xcscheme
+      - name: Unsigned release build
+        run: xcodebuild -project MyStackViewExcersize.xcodeproj -scheme MyStackViewExcersize -configuration Release -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build
+      - name: Simulator UI journeys
+        run: |
+          device_id=$(xcrun simctl list devices available -j | ruby -rjson -e 'devices=JSON.parse(STDIN.read).fetch("devices").values.flatten; phone=devices.find { |device| device["isAvailable"] && device["name"].start_with?("iPhone") }; abort "No available iPhone simulator" unless phone; puts phone.fetch("udid")')
+          xcodebuild -project MyStackViewExcersize.xcodeproj -scheme MyStackViewExcersize -destination "platform=iOS Simulator,id=$device_id" -only-testing:MyStackViewExcersizeUITests test
+      - run: '! grep -R -E "api[_-]?key|secret[[:space:]]*=" Config stackviewtest --exclude=Info.plist'

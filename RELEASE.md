@@ -1,0 +1,5 @@
+# Reproducible release path
+
+Copy `Config/Environment.example.xcconfig` to the ignored `Config/Environment.xcconfig`, set the HTTPS endpoint without credentials, and supply it to the build environment. Run `swift test`, then build with `xcodebuild -project MyStackViewExcersize.xcodeproj -scheme MyStackViewExcersize -configuration Release -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build`. The Release configuration is bound to `Config/Release.xcconfig`. Archive/sign only in an isolated Apple signing environment using an approved bundle identifier, provisioning profile, the checked-in AppIcon set, `PrivacyInfo.xcprivacy`, and `Config/ExportOptions.plist`.
+
+The checked-in configuration contains no signing identity, production endpoint, analytics key, or crash-provider credential. CI runs cache-migration/unit coverage, an unsigned Release build, and fixture-backed simulator UI journeys for offline recovery, malformed input, landscape, and Spanish localization. Physical-device lifecycle/rotation/accessibility checks, App Store privacy review, signing, screenshots/metadata, and distribution remain external release gates.

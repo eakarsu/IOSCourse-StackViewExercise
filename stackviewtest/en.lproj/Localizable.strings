@@ -1,0 +1,11 @@
+"journey.title" = "Stack Journey";
+"journey.loading" = "Loading items…";
+"journey.empty" = "No items are available yet.";
+"journey.offline" = "Offline — showing the last saved items.";
+"journey.retry" = "Try Again";
+"journey.retry.hint" = "Attempts to load the items again.";
+"journey.loaded" = "%d items loaded";
+"journey.error.offline_no_cache" = "You are offline and no saved items are available.";
+"journey.error.malformed_response" = "The service returned data this version cannot read.";
+"journey.error.service_unavailable" = "The service is temporarily unavailable. Please try again.";
+"journey.error.unexpected_error" = "Something went wrong. Please try again.";

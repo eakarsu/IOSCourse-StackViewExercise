@@ -1,0 +1,11 @@
+"journey.title" = "Recorrido de pila";
+"journey.loading" = "Cargando elementos…";
+"journey.empty" = "Todavía no hay elementos disponibles.";
+"journey.offline" = "Sin conexión: mostrando los últimos elementos guardados.";
+"journey.retry" = "Intentar de nuevo";
+"journey.retry.hint" = "Intenta cargar los elementos de nuevo.";
+"journey.loaded" = "%d elementos cargados";
+"journey.error.offline_no_cache" = "No hay conexión ni elementos guardados.";
+"journey.error.malformed_response" = "El servicio devolvió datos incompatibles.";
+"journey.error.service_unavailable" = "El servicio no está disponible temporalmente. Inténtalo de nuevo.";
+"journey.error.unexpected_error" = "Ocurrió un error. Inténtalo de nuevo.";

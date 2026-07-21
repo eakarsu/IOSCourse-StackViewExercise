@@ -1,0 +1,6 @@
+.build/
+DerivedData/
+*.xcresult
+Config/Environment.xcconfig
+*.mobileprovision
+*.p12
