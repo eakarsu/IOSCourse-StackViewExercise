@@ -5,6 +5,7 @@ const logoutButton = document.querySelector("#logout");
 const identity = document.querySelector("#identity");
 const statusLine = document.querySelector("#status");
 const result = document.querySelector("#result");
+const demoCredentialsButton = document.querySelector("#demo-credentials");
 
 function token() {
   return sessionStorage.getItem("stackRuntimeToken");
@@ -35,6 +36,16 @@ async function api(path, options = {}) {
   if (!response.ok) throw new Error(body.error || `request_${response.status}`);
   return body;
 }
+
+demoCredentialsButton.addEventListener("click", async () => {
+  try {
+    const credentials = await api("/api/auth/demo-credentials");
+    loginForm.elements.email.value = credentials.email;
+    loginForm.elements.password.value = credentials.password;
+  } catch (error) {
+    statusLine.textContent = "Demo credentials are unavailable.";
+  }
+});
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();

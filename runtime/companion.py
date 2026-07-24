@@ -326,6 +326,15 @@ def build_api_server(
             if path == "/api/health":
                 self.send_json(200, {"status": "ok", "service": "stack-runtime-companion"})
                 return
+            if path == "/api/auth/demo-credentials":
+                enabled = os.environ.get("ENABLE_DEMO_CREDENTIAL_AUTOFILL", "true").lower() == "true"
+                email = os.environ.get("DEMO_EMAIL") or os.environ.get("PROVISION_ADMIN_EMAIL")
+                password = os.environ.get("DEMO_PASSWORD") or os.environ.get("PROVISION_ADMIN_PASSWORD")
+                if os.environ.get("NODE_ENV") == "production" or not enabled or not email or not password:
+                    self.send_json(404, {"error": "not_found"})
+                    return
+                self.send_json(200, {"email": email, "password": password})
+                return
             if path == "/api/auth/me":
                 actor = self.actor()
                 if not actor:
