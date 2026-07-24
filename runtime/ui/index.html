@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stack View Advisory</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">IOSCourse · Runtime companion</p>
+      <h1>Stack View Advisory</h1>
+      <p class="lede">Sign in to request a provider-backed review of a de-identified UIStackView layout.</p>
+    </header>
+
+    <section class="panel" aria-labelledby="login-title">
+      <div class="panel-heading">
+        <div>
+          <p class="step">01</p>
+          <h2 id="login-title">Secure sign in</h2>
+        </div>
+        <button id="logout" class="quiet" type="button" hidden>Sign out</button>
+      </div>
+      <form id="login-form">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">Sign in</button>
+      </form>
+      <p id="identity" class="identity" hidden></p>
+    </section>
+
+    <section class="panel" aria-labelledby="advisory-title">
+      <p class="step">02</p>
+      <h2 id="advisory-title">Describe the layout</h2>
+      <form id="advisory-form">
+        <label for="layout-description">De-identified layout description</label>
+        <textarea id="layout-description" name="layoutDescription" rows="7" maxlength="4000" required placeholder="Example: A vertical stack contains a multiline title, flexible spacer, and two equal-width buttons. At Dynamic Type XXL the buttons clip."></textarea>
+        <button type="submit">Request advisory</button>
+      </form>
+      <div id="result" class="result" hidden>
+        <h3>Provider advisory</h3>
+        <p id="advisory"></p>
+        <p id="receipt" class="receipt"></p>
+      </div>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite">Sign in to begin.</p>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -4,3 +4,5 @@ DerivedData/
 Config/Environment.xcconfig
 *.mobileprovision
 *.p12
+.env
+.runtime/
