@@ -23,20 +23,20 @@ class UIHandler(SimpleHTTPRequestHandler):
         self.send_header(
             "Content-Security-Policy",
             "default-src 'self'; script-src 'self'; style-src 'self'; "
-            "connect-src http://127.0.0.1:31004; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",
+            f"connect-src http://127.0.0.1:{os.environ.get('API_PORT', '')}; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",
         )
         super().end_headers()
 
 
 def main() -> int:
     port_text = os.environ.get("UI_PORT", "")
-    if port_text != "31005":
-        print("UI_PORT must be 31005 for this verification shard", file=sys.stderr)
+    if not port_text.isdigit() or not 1024 <= int(port_text) <= 65535:
+        print("UI_PORT must be numeric and between 1024 and 65535", file=sys.stderr)
         return 2
     directory = Path(__file__).resolve().parent / "ui"
     handler = partial(UIHandler, directory=str(directory))
-    server = ThreadingHTTPServer(("127.0.0.1", 31005), handler)
-    print("runtime UI listening on http://127.0.0.1:31005", flush=True)
+    server = ThreadingHTTPServer(("127.0.0.1", int(port_text)), handler)
+    print(f"runtime UI listening on http://127.0.0.1:{port_text}", flush=True)
     try:
         server.serve_forever(poll_interval=0.2)
     except KeyboardInterrupt:

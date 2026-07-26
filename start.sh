@@ -27,9 +27,8 @@ set +a
 : "${OPENROUTER_MODEL:?OPENROUTER_MODEL is required}"
 : "${OPENROUTER_BASE_URL:?OPENROUTER_BASE_URL is required}"
 
-[[ "$API_PORT" == "31004" ]] || { echo "API_PORT must be 31004" >&2; exit 1; }
-[[ "$UI_PORT" == "31005" ]] || { echo "UI_PORT must be 31005" >&2; exit 1; }
-[[ "$UI_ORIGIN" == "http://127.0.0.1:31005" ]] || { echo "UI_ORIGIN is invalid" >&2; exit 1; }
+[[ "$API_PORT" =~ ^[0-9]+$ && "$UI_PORT" =~ ^[0-9]+$ && "$API_PORT" != "$UI_PORT" ]] || { echo "API_PORT and UI_PORT must be distinct numeric ports" >&2; exit 1; }
+[[ "$UI_ORIGIN" == "http://127.0.0.1:$UI_PORT" ]] || { echo "UI_ORIGIN is invalid" >&2; exit 1; }
 [[ "$OPENROUTER_BASE_URL" == "https://openrouter.ai/api/v1" ]] || { echo "OPENROUTER_BASE_URL is invalid" >&2; exit 1; }
 [[ -f "$RUNTIME_DB_PATH" ]] || { echo "runtime database missing; run python3 -m runtime.prepare" >&2; exit 1; }
 

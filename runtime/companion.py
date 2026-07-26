@@ -54,10 +54,10 @@ class RuntimeConfig:
             api_port = int(required["API_PORT"])
         except ValueError as error:
             raise ValueError("API_PORT must be numeric") from error
-        if api_port != 31004:
-            raise ValueError("API_PORT must be 31004 for this verification shard")
-        if required["UI_ORIGIN"] != "http://127.0.0.1:31005":
-            raise ValueError("UI_ORIGIN must be http://127.0.0.1:31005")
+        if not 1024 <= api_port <= 65535:
+            raise ValueError("API_PORT must be between 1024 and 65535")
+        if required["UI_ORIGIN"] != f"http://127.0.0.1:{os.environ.get('UI_PORT', '')}":
+            raise ValueError("UI_ORIGIN must match UI_PORT")
         if required["OPENROUTER_BASE_URL"] != CANONICAL_BASE_URL:
             raise ValueError("OPENROUTER_BASE_URL must be canonical")
         return cls(
