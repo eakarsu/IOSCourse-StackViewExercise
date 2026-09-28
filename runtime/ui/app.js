@@ -1,4 +1,4 @@
-const apiBase = "http://127.0.0.1:31004";
+const apiBase = window.RUNTIME_API_BASE;
 const loginForm = document.querySelector("#login-form");
 const advisoryForm = document.querySelector("#advisory-form");
 const logoutButton = document.querySelector("#logout");
