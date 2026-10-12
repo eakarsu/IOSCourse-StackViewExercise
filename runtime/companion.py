@@ -146,6 +146,26 @@ class RuntimeDatabase:
             row = connection.execute("SELECT COUNT(*) AS count FROM ai_interactions").fetchone()
         return int(row["count"])
 
+    def recent_interactions(self, user_id: int) -> list[dict[str, object]]:
+        with self.connect() as connection:
+            rows = connection.execute(
+                "SELECT id, prompt, model, created_at FROM ai_interactions "
+                "WHERE user_id = ? ORDER BY id DESC LIMIT 50", (user_id,)
+            ).fetchall()
+        return [dict(row) for row in rows]
+
+    def interaction(self, user_id: int, interaction_id: int) -> dict[str, object] | None:
+        with self.connect() as connection:
+            row = connection.execute(
+                "SELECT id, prompt, response, model, provider_receipt, created_at "
+                "FROM ai_interactions WHERE user_id = ? AND id = ?", (user_id, interaction_id)
+            ).fetchone()
+        if row is None:
+            return None
+        record = dict(row)
+        record["providerReceipt"] = json.loads(record.pop("provider_receipt"))
+        return record
+
 
 def prepare_database(path: Path, email: str, password: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -341,6 +361,28 @@ def build_api_server(
                     self.send_json(401, {"error": "authentication_required"})
                     return
                 self.send_json(200, {"user": actor})
+                return
+            if path == "/api/ai/interactions":
+                actor = self.actor()
+                if not actor:
+                    self.send_json(401, {"error": "authentication_required"})
+                    return
+                self.send_json(200, {"interactions": database.recent_interactions(int(actor["id"]))})
+                return
+            if path.startswith("/api/ai/interactions/"):
+                actor = self.actor()
+                if not actor:
+                    self.send_json(401, {"error": "authentication_required"})
+                    return
+                identifier = path.removeprefix("/api/ai/interactions/")
+                if not identifier.isdecimal():
+                    self.send_json(404, {"error": "not_found"})
+                    return
+                record = database.interaction(int(actor["id"]), int(identifier))
+                if record is None:
+                    self.send_json(404, {"error": "not_found"})
+                    return
+                self.send_json(200, {"interaction": record})
                 return
             self.send_json(404, {"error": "not_found"})
 

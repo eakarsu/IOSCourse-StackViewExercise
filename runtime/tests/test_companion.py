@@ -139,6 +139,31 @@ class CompanionTests(unittest.TestCase):
         self.assertNotIn("must-not-appear", log.getvalue())
         self.assertNotIn("private upstream detail", log.getvalue())
 
+    def test_saved_interactions_return_structured_content_for_owner_only(self) -> None:
+        structured = '{"checks":[{"name":"Spacing","passed":false,"count":0}],"notes":""}'
+        server = self.start_server(lambda config, prompt: (structured, {"requestId": "fixture"}))
+        token = self.login(server)
+        status, returned, _ = self.request(server, "POST", "/api/ai/stack-layout-advisory",
+                                           {"layoutDescription": "Nested stack clips at XXL."}, token)
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(returned["advisory"])["checks"][0]["passed"], False)
+        status, listing, _ = self.request(server, "GET", "/api/ai/interactions", token=token)
+        self.assertEqual(status, 200)
+        self.assertEqual(listing["interactions"][0]["id"], returned["interactionId"])
+        status, detail, _ = self.request(server, "GET", f'/api/ai/interactions/{returned["interactionId"]}', token=token)
+        self.assertEqual(status, 200)
+        self.assertEqual(detail["interaction"]["response"], structured)
+        self.assertEqual(detail["interaction"]["providerReceipt"]["requestId"], "fixture")
+        prepare_database(self.database_path, "other@example.com", "OtherFixture123!")
+        _, other_login, _ = self.request(server, "POST", "/api/auth/login",
+                                         {"email": "other@example.com", "password": "OtherFixture123!"})
+        other_token = other_login["token"]
+        status, other_list, _ = self.request(server, "GET", "/api/ai/interactions", token=other_token)
+        self.assertEqual(status, 200)
+        self.assertEqual(other_list["interactions"], [])
+        status, _, _ = self.request(server, "GET", f'/api/ai/interactions/{returned["interactionId"]}', token=other_token)
+        self.assertEqual(status, 404)
+
     def test_interaction_ledger_is_append_only(self) -> None:
         database = RuntimeDatabase(self.database_path)
         user_id = database.authenticate(EMAIL, PASSWORD)

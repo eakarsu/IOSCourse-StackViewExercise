@@ -34,6 +34,17 @@ button:hover { background: #0d2e28; }
 .quiet { margin: 0; border: 1px solid #153e36; color: #153e36; background: transparent; }
 .identity { margin: 0; color: #235d51; font-weight: 750; }
 .result { margin-top: 24px; padding: 20px; border-left: 4px solid #e06b3f; background: #fff7f2; line-height: 1.6; white-space: pre-wrap; }
+.history-list { padding-left: 0; list-style: none; }
+.history-list li { margin: 8px 0; }
+.history-list button { margin: 0; max-width: 100%; text-align: left; overflow-wrap: anywhere; }
+.browser-ai-report { white-space: normal; overflow-wrap: anywhere; }
+.browser-report-section { margin: 16px 0; }
+.browser-report-section h3 { margin-bottom: 4px; }
+.browser-report-table { max-width: 100%; overflow-x: auto; }
+.browser-report-table table { border-collapse: collapse; width: 100%; }
+.browser-report-table th, .browser-report-table td { border: 1px solid #d8d8d2; padding: 8px; text-align: left; vertical-align: top; }
+.browser-report-code { max-width: 100%; overflow-x: auto; }
+.muted { color: #6d7370; font-style: italic; }
 .receipt { color: #6d5148; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem; overflow-wrap: anywhere; }
 .status { min-height: 1.5em; color: #52605d; }
 @media (max-width: 560px) { .shell { padding: 34px 0; } .panel { padding: 21px; } }
